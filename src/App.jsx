@@ -1,7 +1,10 @@
 
-import landingPage from './assets/landingPage.png'
-import './App.css'
-import Button from './compnents/button'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import LandingPage from './AppPages/landingPage';
+import Login from './AppPages/login';
+import SignUp from './AppPages/signUp';
+
 
 
 
@@ -10,23 +13,18 @@ function App() {
 
   return (
     <>
-      <article className='clipped-section'>
-        <header>
-            <h1 className='logo'>TicketFlow.</h1>
-            <nav className='nav'>
-                <Button label="Login" />
-                <Button label="Sign up" />
-            </nav>
-        </header>
-        <section className='hero'>
-           <h1>Effortlessly manage your tickets with TicketFlow – your all-in-one solution for streamlined issue tracking, fast resolution, and team collaboration. Simplify workflows, stay organized, and keep everything flowing.</h1>
-            <img src= {landingPage} alt="description" className='landingPageImg'/>
-        </section>
+        <BrowserRouter>
+            <Routes>
+                <Route path = "/" element = {<LandingPage />}/>
+                <Route path = "/login" element = {<Login />}/>
+                <Route path = "/signUp" element = {<SignUp />}/>
+            </Routes>
+        </BrowserRouter>
         <footer className='footer'>
           <h1>TicketFlow.</h1>
-          <p className='footerParagraph'>© { new Date().getFullYear() }. TicketFlow. All Rights Reserved</p>
+          <p className='footerParagraph'> © { new Date().getFullYear() }. TicketFlow. All Rights Reserved. </p>
         </footer>
-      </article>
+     
     </>
   )
 }
