@@ -23,11 +23,11 @@ export default function TicketCreation({onSubmit, onClose}){
                     description,
                     status: "open",
                 };
-                onSubmit(newTicket); // ✅ send new ticket to dashboard
+                onSubmit(newTicket); 
                 setTitle("");
                 setDescription("");
                 setError("");
-                onClose(); // ✅ close modal after submission
+                onClose(); 
             };
 
         };

@@ -1,6 +1,9 @@
 
 import React, { use, useState } from "react";
 import '../App.css'
+import { useNavigate } from 'react-router-dom';
+import Header from "../compnents/header";
+import Footer from "../compnents/footer";
 
 
 export default function SignUp (){
@@ -10,6 +13,7 @@ export default function SignUp (){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("")
+     const navigate = useNavigate();
 
     const submit = (e) => {
         e.preventDefault();
@@ -37,12 +41,14 @@ export default function SignUp (){
             password
         };
         localStorage.setItem("user", JSON.stringify(newUser) );
-        alert("Sign Up Successful!");
+        navigate('/dashboard');
+        
     }
 
 
     return(
         <>
+            <Header />
             <main className="root">
                 <main className="formContainer">
                     <h1>Sign Up</h1>
@@ -85,6 +91,7 @@ export default function SignUp (){
                     <p style={{color: 'red'}}>{error}</p>
                 </main>
             </main>
+            <Footer />
         </>
     )
 }

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import TicketCreation from "../compnents/ticketCreation";
 import TicketEdit from "../compnents/ticketEdit";
+import TicketView from "../compnents/ticketView";
 import '../App.css';
 
 export default function Dashboard () {
@@ -9,6 +11,8 @@ export default function Dashboard () {
     const [showForm, setShowForm] = useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
     const [selectedTicket, setSelectedTicket] = useState(null);
+    const [isViewing, setIsViewing] = useState(false);
+    const [userName, setUserName] = useState("");
 
     const handleAddTicket = (ticket) => {
         setTickets ([...tickets, ticket]);
@@ -37,13 +41,30 @@ export default function Dashboard () {
             setSelectedTicket(null);     
     }
 
+    const handleViewClick = (ticket) => {
+        setSelectedTicket(ticket);
+        setIsViewing(true);
+      };
+      
+      const handleCloseView = () => {
+        setIsViewing(false);
+        setSelectedTicket(null);
+      };
+
+      useEffect(() => {
+        const name = localStorage.getItem("currentUser");
+        if (name) {
+          setUserName(name);
+        }
+      }, []);
+
     return(
         <>
             <main>
                 <header style={{border: '1px solid black'}}>
-                    <h1>TicketFlow.</h1>
+                    <a href="/" style={{textDecoration: 'none', color: 'inherit'}}><h1>TicketFlow.</h1></a>
                     <section style={{display: 'flex', alignItems: 'center', gap: '20px'}}>
-                        <h2>Welcome back, name.</h2>
+                        <h2>Welcome, {userName || "User"} 👋.</h2>
                         <button style={{height: '40px', border: 'none', borderRadius: '10px', color: 'white', backgroundColor: '#4F46E5'}} onClick={ () => setShowForm(true)}>+ New Ticket</button>
                     </section>
                 </header>
@@ -52,13 +73,20 @@ export default function Dashboard () {
                         onClose={ () => setShowForm(false)}
                     />
 
-                )};
+                )}
 
                     {showEditForm && selectedTicket && (<TicketEdit
                         ticket={selectedTicket}
                         onUpdate={handleUpdateTicket}
                         onClose={() =>  setShowEditForm(false)}
                     />)}
+
+                    {isViewing && (
+                        <TicketView
+                        ticket={selectedTicket}
+                        onClose={handleCloseView}
+                        />
+                    )}
 
                <section style={{padding: '20px'}}>
                      <h3>All Tickets</h3>
@@ -70,12 +98,17 @@ export default function Dashboard () {
                         
                         {tickets.map((ticket) => (
                         <div key={ticket.id} className="ticketCard">
+                            
                             <h4>{ticket.title}</h4>
                             <p>{ticket.description}</p>
                            
                             <section style={{display: 'flex', justifyContent: 'space-between'}}>
                                  <span className = {`status ${ticket.status === "open" ? "status-open" : ticket.status === "in progress" ? "status-inProgress" : "status-close"}`} >{ticket.status}</span>
                                  <section style={{display: 'flex', gap: '10px'}}>
+                                    <button 
+                                        onClick={() => handleViewClick(ticket)}
+                                        style = {{backgroundColor: 'white', borderRadius: '10px', fontWeight: 'bold', border: '2px solid #ccc'}}>
+                                        View</button>
                                     <button 
                                         onClick = {() => handleEditClick(ticket)}
                                         style = {{backgroundColor: 'white', borderRadius: '10px', fontWeight: 'bold', border: '2px solid #ccc'}}>

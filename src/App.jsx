@@ -22,10 +22,6 @@ function App() {
                 <Route path = "/dashboard" element = {<Dashboard />}/>
             </Routes>
         </BrowserRouter>
-        <footer className='footer'>
-          <h1>TicketFlow.</h1>
-          <p className='footerParagraph'> © { new Date().getFullYear() }. TicketFlow. All Rights Reserved. </p>
-        </footer>
      
     </>
   )

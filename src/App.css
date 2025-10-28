@@ -41,6 +41,11 @@
   color: #888;
 } */
 
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 
 /* LANDING PAGE */
@@ -49,7 +54,7 @@ header{
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  /* border: 5px solid black; */
+  border: 2px solid #ccc;
 }
 .nav{
   display: flex;
@@ -88,6 +93,11 @@ header{
 }
 .footer{
   padding: 20px;
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+  background: #f1f1f1;
+  padding: 10px;  
 }
 
 /*FORM */
@@ -101,10 +111,10 @@ header{
 
 .formContainer{
   width: 30%;
-  height: 60%;
+  /* height: 50%; */
   border: 1px solid skyblue;
   padding: 20px;
-  margin-top: 13%;
+  /* margin-top: 13%; */
 }
 .root{
   width: 100%;
@@ -149,7 +159,7 @@ input::placeholder{
 
 .ticketGrid{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   margin-top: 20px;
 
@@ -200,4 +210,43 @@ input::placeholder{
 }
 button{
   cursor: pointer;
+}
+
+/* VIEW */
+
+.view-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.view-container {
+  background: white;
+  width: 400px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.ticket-details p {
+  margin: 10px 0;
+}
+
+.close-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.close-btn:hover {
+  background-color: #0056b3;
 }
