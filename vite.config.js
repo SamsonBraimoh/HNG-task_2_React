@@ -10,4 +10,5 @@ export default defineConfig({
       },
     }),
   ],
+  base: '/HNG-task_2_React/',
 })
