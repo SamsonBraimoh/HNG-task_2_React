@@ -3,6 +3,7 @@ import '../App.css'
 import Header from "../compnents/header";
 import Footer from "../compnents/footer";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default function Login () {
@@ -25,7 +26,7 @@ export default function Login () {
                     navigate('/dashboard');
                 }
                 else{
-                    setError("***Invalid email or username");
+                    setError("***Incorrect email or username");
                 };
             
             };
@@ -39,7 +40,7 @@ export default function Login () {
            <main className="root">
                  <main className="formContainer">
                     <h1>Login</h1>
-                    <form action="" className="loginForm" onSubmit={submitForm}>
+                    <form action="" className="loginForm" onSubmit={submitForm} noValidate>
 
                         <label htmlFor="email">Email</label>
                         <input 
@@ -63,7 +64,7 @@ export default function Login () {
 
                      </form>
                      <p style={{color: 'red'}}>{error}</p>
-                     <p>Don't have an account? <a href="">Sign up</a></p>
+                     <p>Don't have an account? <Link to="/signUp">Sign up</Link></p>
                  </main>   
             </main> 
             <Footer />
