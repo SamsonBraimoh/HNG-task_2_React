@@ -35,7 +35,7 @@ export default function TicketEdit({ticket, onUpdate, onClose}){
 
     return(
         <>
-            <main className="root modal-overlay">
+            <main className="root modal-overlay" style={{zIndex: '2000'}}>
                 <main className="formContainer" 
                     style={{marginTop: "0", backgroundColor: 'white', borderRadius: '10px', border: 'none', boxShadow: '0 4px 10px rgba(0,0,0,0.2)'}} >
                     <form action="" onSubmit={handleUpdate} className="loginForm">
@@ -61,15 +61,16 @@ export default function TicketEdit({ticket, onUpdate, onClose}){
                         name="" 
                         id="status"
                         value={status}
-                        onChange={(e) => setStatus(e.target.value)}>
+                        onChange={(e) => setStatus(e.target.value)}
+                        style={{height: '40px', border: '1px solid #ccc', outline: 'none', borderRadius: '5px'}}>
                             <option value="open">Open</option>
                             <option value="in progress">In progress</option>
                             <option value="closed">Closed</option>
                         </select>
                         
                         {/* <div style={{display: 'flex', justifyContent: 'center', gap: '20px'}}> */}
-                            <button type="submit">Save</button>
-                            <button onClick={onClose} style={{float: 'right'}}>Close</button>
+                            <button type="submit" style={{backgroundColor: '#007bff', color: 'white', border: 'none', height: '30px', borderRadius: '5px'}}>Save</button>
+                            <button onClick={onClose} style={{backgroundColor: '#007bff', color: 'white', border: 'none', height: '30px', borderRadius: '5px'}} className="loginBtn">Close</button>
                         {/* </div> */}
                     </form>
                     <p style={{color: 'red', fontStyle: 'italic'}}>{error}</p>

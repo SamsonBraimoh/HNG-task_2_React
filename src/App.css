@@ -49,7 +49,7 @@ html, body, #root {
 }
 
 
-/* LANDING PAGE */
+/* HEADER */
 header{
   display: flex;
   align-items: center;
@@ -78,14 +78,42 @@ header{
   height: 15%;
   border-radius: 15px;
 }
-.hero{
-  display: flex;
+@media (max-width:600px) {
+  .nav{
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  .reusableBtn{
+    padding: 5px;
+  }
 }
+/* LANDING PAGE */
 .hero {
   background-color: #4f46e5;
   color: white;
   padding: 4rem 2rem;
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  display: flex;
+  align-items: center;
+}
+
+.landingPageImg{
+  width: 30%;
+}
+.intro{
+  width: 70%;
+}
+
+@media (max-width: 600px) {
+  .hero{
+    flex-direction: column-reverse;
+  }
+  .landingPageImg{
+    width: 100%;
+  }
+  .intro{
+    width: 100%;
+  }
 }
 
 /* FOOTER */
@@ -94,7 +122,6 @@ header{
 }
 .footer{
   padding: 20px;
-  /* position: fixed; */
   bottom: 0;
   width: 100%;
   background: #f1f1f1;
@@ -107,15 +134,12 @@ header{
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* width: 40%; */
 }
 
 .formContainer{
   width: 30%;
-  /* height: 50%; */
   border: 1px solid skyblue;
   padding: 20px;
-  /* margin-top: 13%; */
 }
 .root{
   width: 100%;
@@ -156,6 +180,13 @@ input::placeholder{
   font-style: italic;
 }
 
+@media (max-width: 600px) {
+  .formContainer{
+    width: 80%;
+  }
+  
+}
+
 /* DASHBOARD */
 
 .ticketGrid{
@@ -191,7 +222,6 @@ input::placeholder{
 
 .status {
   display: inline-block;
-  /* background: #e0f7fa; */
   font-weight: bold;
   font-size: 0.9rem;
   padding: 5px 10px;

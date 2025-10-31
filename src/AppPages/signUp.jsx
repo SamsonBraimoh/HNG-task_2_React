@@ -12,7 +12,7 @@ export default function SignUp (){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("")
+    const [error, setError] = useState("");
      const navigate = useNavigate();
 
     const submit = (e) => {
@@ -35,12 +35,15 @@ export default function SignUp (){
             return;
         }
         setError("");
+       
         const newUser = {
-            name,
+            fullName,
             email,
             password
         };
+
         localStorage.setItem("user", JSON.stringify(newUser) );
+        localStorage.setItem("currentUser", storedUser.fullName);
         navigate('/dashboard');
         
     }
@@ -53,10 +56,10 @@ export default function SignUp (){
                 <main className="formContainer">
                     <h1>Sign Up</h1>
                     <form action="" className="loginForm" onSubmit={submit} noValidate>
-                        <label htmlFor="name">Full Name</label>
+                        <label htmlFor="fullName">Full Name</label>
                         <input 
                             type="text" 
-                            id="name" 
+                            id="fullName" 
                             value={fullName} 
                             onChange={(e) => setFullName(e.target.value)}    
                         />

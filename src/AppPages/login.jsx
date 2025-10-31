@@ -22,7 +22,7 @@ export default function Login () {
             if(storedUser){
                 if(storedUser.email === email && storedUser.password === password){
                     localStorage.setItem("isLoggedIn", true);
-                    localStorage.setItem("currentUser", storedUser.name);
+                    localStorage.setItem("currentUser", storedUser.fullName);
                     navigate('/dashboard');
                 }
                 else{

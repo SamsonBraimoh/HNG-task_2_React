@@ -52,9 +52,9 @@ export default function Dashboard () {
       };
 
       useEffect(() => {
-        const name = localStorage.getItem("currentUser");
-        if (name) {
-          setUserName(name);
+        const fullName = localStorage.getItem("currentUser");
+        if (fullName) {
+          setUserName(fullName);
         }
       }, []);
 
@@ -64,10 +64,11 @@ export default function Dashboard () {
                 <header style={{border: '1px solid black'}}>
                     <a href="/" style={{textDecoration: 'none', color: 'inherit'}}><h1>TicketFlow.</h1></a>
                     <section style={{display: 'flex', alignItems: 'center', gap: '20px'}}>
-                        <h2>Welcome, {userName || "User"} 👋.</h2>
                         <button style={{height: '40px', border: 'none', borderRadius: '10px', color: 'white', backgroundColor: '#4F46E5'}} onClick={ () => setShowForm(true)}>+ New Ticket</button>
                     </section>
                 </header>
+                        <h2 style={{float: 'right'}}>Welcome, {userName || "User"} 👋</h2>
+                   
                     {showForm &&(<TicketCreation  
                         onSubmit={handleAddTicket}
                         onClose={ () => setShowForm(false)}
@@ -88,7 +89,7 @@ export default function Dashboard () {
                         />
                     )}
 
-               <section style={{padding: '20px'}}>
+               <section style={{padding: '20px', marginTop: '100px'}}>
                      <h3>All Tickets</h3>
                      {tickets.length === 0 ? (
                     <p>No tickets yet. Click “+ New Ticket” to create one.</p>

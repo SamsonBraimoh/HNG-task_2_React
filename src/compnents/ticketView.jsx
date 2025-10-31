@@ -15,7 +15,7 @@ export default function TicketView({ticket, onClose}){
           <p><strong>Description:</strong> {ticket.description}</p>
           <p><strong>Status:</strong> 
             <span className={`status-tag ${ticket.status.toLowerCase().replace(" ", "-")}`}>
-              {ticket.status}
+               {ticket.status}
             </span>
           </p>
           <p><strong>Created:</strong> {ticket.date || "N/A"}</p>
